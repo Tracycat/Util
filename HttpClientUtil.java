@@ -1,5 +1,3 @@
-package com.yonyou.util;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +11,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
 import org.apache.log4j.Logger;
 
 public class HttpClientUtil {
@@ -21,13 +18,13 @@ public class HttpClientUtil {
 	public static Logger logger = Logger.getLogger(HttpClientUtil.class);
 	
 	public static void main(String[] args) {
-		try {			
+		try {
+			//测试调用模拟浏览器跨域发送请求JSON数据
 			String url = "http://localhost:8080/INFO_DMS_WEB/JsonInterfaceChannel?";
 			//URL后拼接参数
-			String str = "{action:SA010,DEALER_CODE:DNML010,CUSTOMER_NO:[CL1609280019],NET_PIN_CODE:[4132000000062]}";							
-			String result = HttpClientUtil.request(null, url, str, "form", "UTF-8");
-			System.out.println(result);	
-			
+			String params = "{action:SA010,DEALER_CODE:DNML010,CUSTOMER_NO:[CL1609280019],NET_PIN_CODE:[4132000000062]}";							
+			String result = HttpClientUtil.request(null, url, params, "form", "UTF-8");
+			System.out.println(result);				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -48,7 +45,7 @@ public class HttpClientUtil {
 			// 获取连接对象
 			connection = getConnection(uuid, sessionId, url, "POST", contentType, charset);
 			if (params != null && !params.isEmpty()) {
-				// 转换为字节数组
+				// 转换为字节数组，以字节流传输，解决中文乱码传输问题
 				buffer = params.getBytes(charset);
 			} else {
 				buffer = "".getBytes(charset);
@@ -102,46 +99,6 @@ public class HttpClientUtil {
 		return null;
 	}
 	
-	//参数拼接处理，传入一个MAP，返回一个拼接好的URL参数
-	public static String map2params(Map<String, Object> params){
-		StringBuffer buffer = new StringBuffer("");
-		buffer.append("1=1");
-		for(String key : params.keySet()){
-			buffer.append("&").append(key).append("=").append(params.get(key));
-		}
-		return buffer.toString();
-	}
-	
-	/**
-	 * 根据http地址获取session id
-	 * @param httpUrl
-	 * @return
-	 */
-	public static String getSessionId(String httpUrl) {
-		OutputStream out = null;
-		InputStream in = null;
-		URL url = null;
-		try {
-			url = new URL(httpUrl);
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			connection.setRequestMethod("POST");
-			String cookieValue = connection.getHeaderField("Set-Cookie");
-			return cookieValue.substring(0, cookieValue.indexOf(";"));
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		} finally {
-			try {
-				if (in != null)
-					in.close();
-				if (out != null)
-					out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
 	//获取网络连接对象
 	private static HttpURLConnection getConnection(String uuid,
 			String sessionId, String url, String method, String contentType,
@@ -189,7 +146,47 @@ public class HttpClientUtil {
 		}
 		return connection;
 	}
-		
+	
+	//参数拼接处理，传入一个MAP，返回一个拼接好的URL参数
+	public static String map2params(Map<String, Object> params){
+		StringBuffer buffer = new StringBuffer("");
+		buffer.append("1=1");
+		for(String key : params.keySet()){
+			buffer.append("&").append(key).append("=").append(params.get(key));
+		}
+		return buffer.toString();
+	}
+	
+	/**
+	 * 根据http地址获取session id
+	 * @param httpUrl
+	 * @return
+	 */
+	public static String getSessionId(String httpUrl) {
+		OutputStream out = null;
+		InputStream in = null;
+		URL url = null;
+		try {
+			url = new URL(httpUrl);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("POST");
+			String cookieValue = connection.getHeaderField("Set-Cookie");
+			return cookieValue.substring(0, cookieValue.indexOf(";"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (in != null)
+					in.close();
+				if (out != null)
+					out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+			
 	/**
 	 * 关闭流
 	 * @param input
