@@ -1,4 +1,4 @@
-package com.yonyou.util;
+package Util;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,12 +7,14 @@ import java.io.OutputStream;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
 /***
  * FTP 服务器文件操作工具类
+ * 
+ * 引入依赖
+ * commons-net-3.1.jar
  */
 public class FtpClientUtil {
 
@@ -497,15 +499,5 @@ public class FtpClientUtil {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args) throws Exception {
-//		FtpClientUtil.read("E:\\MySpaces\\GAMC\\INFODCS\\bin\\Tomcat\\temp\\A.pdf", "/INFODCS/STATEMENT_DEALER/201803/D187CB4805D04992A94DB4F2AD7ABC918948765992158053934.pdf", "172.18.81.48", 21, "ftpuser", "ftpuser", "UTF-8");
-//		FtpClientUtil.write("E:\\MySpaces\\GAMC\\INFODCS\\bin\\Tomcat\\temp\\E86E63BA5C074A2AAE70EDABE318D46E2146202995519308737.pdf", "/INFODCS/STATEMENT_DEALER/201803/E86E63BA5C074A2AAE70EDABE318D46E2146202995519308737.pdf", "172.18.81.48", 21, "ftpuser", "ftpuser", "UTF-8");
-//		int result = FtpClientUtil.rmfile("/INFODCS/STATEMENT_DEALER/201803/4004E7049B724D95B02194EBE472F9C4695759209765223511.pdf", "172.18.81.48", 21, "ftpuser", "ftpuser", "UTF-8");
-		int result = FtpClientUtil.rmdirs("/INFODCS/新建文件夹/", "172.18.81.48", 21, "ftpuser", "ftpuser", "UTF-8");
-		System.out.println(result);
-		
-//		String[] strs = FtpClientUtil.listNames("/INFODCS/STATEMENT_DEALER/201806/a", "172.18.81.48", 21, "ftpuser", "ftpuser", "UTF-8");
-//		System.out.println(strs);
-	}
+
 }
