@@ -1,4 +1,4 @@
-package com.yonyou.util;
+package Util;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.Character.UnicodeBlock;
@@ -321,5 +321,39 @@ public class StringUtil {
 		}
 		result.append(str.substring(pos));
 		return result.toString();
+	}
+	
+	
+	/**
+	 *将接收到的多选框数据数组，封装成类似于id1,id2,id3的字符串
+	 * @param QyArea  多选框数组
+	 * @return id1,id2...
+	 */
+	public static String multiselectToStr(String[] QyArea){
+		if(null != QyArea ){
+			String str="";
+				for(int i=0;i<QyArea.length;i++){
+					str+=","+QyArea[i];
+				}
+				return str.substring(1);
+
+		}
+		return null ;
+	}
+	/**
+	 *将接收到的多选框数据数组，封装成类似于'id1','id2','id3'的带引号的字符串
+	 * @param QyArea  多选框数组
+	 * @return 'id1','id2'...
+	 */
+	public static String multiselectToApoStr(String[] QyArea){
+		if(null != QyArea ){
+			String str="";
+			for(int i=0;i<QyArea.length;i++){
+				str+="','"+QyArea[i];
+			}
+			return str.substring(2);
+			
+		}
+		return null ;
 	}
 }
