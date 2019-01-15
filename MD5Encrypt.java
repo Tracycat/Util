@@ -5,9 +5,9 @@ import java.security.MessageDigest;
 public class MD5Encrypt {
 
 	/**
-	 * MD5¼ÓÃÜ
-	 * @param sourceString Ã÷ÎÄÃÜÂë
-	 * @return ÃÜÎÄ
+	 * MD5åŠ å¯†
+	 * @param sourceString æ˜æ–‡å¯†ç 
+	 * @return å¯†æ–‡
 	 */
 	public static String MD5Encode(String sourceString) {
 		String resultString = null;
@@ -22,9 +22,9 @@ public class MD5Encrypt {
 	}
 
 	/**
-	 * ÆÕÍ¨¼ÓÃÜ
-	 * @param bytes Ã÷ÎÄ×Ö½ÚÊı×é
-	 * @return Å¼ÊıÎ»ÖÃÎªÃ÷ÎÄ
+	 * æ™®é€šåŠ å¯†
+	 * @param bytes æ˜æ–‡å­—èŠ‚æ•°ç»„
+	 * @return å¶æ•°ä½ç½®ä¸ºæ˜æ–‡
 	 */
 	public static final String byte2hexString(byte[] bytes) {
 		StringBuffer buf = new StringBuffer(bytes.length * 2);
@@ -37,5 +37,6 @@ public class MD5Encrypt {
 		return buf.toString();
 	}
 
+	
 	
 }
