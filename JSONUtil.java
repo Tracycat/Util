@@ -1,4 +1,4 @@
-package com.yonyou.util;
+package Util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -11,12 +11,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import net.sf.ezmorph.object.DateMorpher;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.util.JSONUtils;
-
+/**
+ * 
+ *引入依赖包
+ *json-lib-2.4-jdk15.jar
+ *jsoup-1.10.3.jar
+ *ezmorph-1.0.6.jar
+ *
+ */
 public class JSONUtil {
 
 	private static final DateMorpher dataMorpher = new DateMorpher(new String[]{"yyyy-MM-dd HH:mm:ss","yyyy-MM-dd"});
