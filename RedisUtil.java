@@ -1,3 +1,5 @@
+package Util;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -9,7 +11,12 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-
+/**
+ * 引入依赖
+ * jedis-2.2.0.jar
+ * commons-pool.jar
+ *
+ */
 public class RedisUtil {
     //可用连接实例的最大数目，默认值为8；
     //如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。

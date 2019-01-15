@@ -1,4 +1,4 @@
-package com.yonyou.util;
+package Util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -7,7 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 
- * @author Administrator
+ * “˝»Î“¿¿µ
+ * springframework
  * 
  */
 public class SpringUtil implements ApplicationContextAware {
