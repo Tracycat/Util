@@ -1,3 +1,6 @@
+package Util;
+
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,6 +12,8 @@ public class DateUtil {
 	private static final int[] dayArray = new int[] { 31, 28, 31, 30, 31, 30,31, 31, 30, 31, 30, 31 };
 	//初始化简单日期格式的实例
 	private static SimpleDateFormat sdf = new SimpleDateFormat();	
+	
+	
 	
 	/**
 	 * 返回系统当前毫秒级日期时间(基于Calendar)
@@ -1198,6 +1203,27 @@ public class DateUtil {
 		}
 		return a;
 	}
+	
+	/**
+	 * 获取当前时间戳
+	 * @return Timestamp
+	 * 
+	 */
+	public static Timestamp getCurrentTimestamp() {		
+        Date now = new Date(System.currentTimeMillis());      
+        return new Timestamp(now.getTime());
+	}
+	
+	/**
+	 * 日期字符串转时间戳
+	 * @param datestr
+	 * @return Timestamp
+	 */
+	public static Timestamp getTimestamp(String datestr) {	
+		Date date =parseDateSecondFormat(datestr);
+        return new Timestamp(date.getTime());
+	}
+	
 	
 	
 }
