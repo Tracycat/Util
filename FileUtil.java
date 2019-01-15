@@ -1,4 +1,4 @@
-package com.yonyou.util;
+package Util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,6 +10,13 @@ import java.io.OutputStream;
 
 public class FileUtil {
 
+	/**
+	 * 
+	 * @param bytes
+	 * @param output
+	 * @return
+	 * @throws Exception
+	 */
 	public static boolean write(byte[] bytes, OutputStream output)
 			throws Exception {
 		try {
@@ -20,8 +27,14 @@ public class FileUtil {
 		}
 	}
 	
-	public static boolean write(byte[] bytes, File file)
-			throws Exception {
+	/**
+	 * 
+	 * @param bytes
+	 * @param file
+	 * @return
+	 * @throws Exception
+	 */
+	public static boolean write(byte[] bytes, File file)throws Exception {
 		OutputStream output = null;
 		try {
 			output = new FileOutputStream(file);
@@ -34,6 +47,13 @@ public class FileUtil {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param srcFile
+	 * @param output
+	 * @return
+	 * @throws Exception
+	 */
 	public static boolean write(File srcFile, OutputStream output) throws Exception {
 		InputStream input = null;
 		try {
@@ -64,6 +84,13 @@ public class FileUtil {
 		}
 	}
 
+	/**
+	 * 
+	 * @param input
+	 * @param tagFile
+	 * @return
+	 * @throws Exception
+	 */
 	public static boolean write(InputStream input, File tagFile) throws Exception {
 		OutputStream output = null;
 		try {
