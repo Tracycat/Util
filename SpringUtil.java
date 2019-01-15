@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 
- * ÒýÈëÒÀÀµ
+ * Ã’Ã½ÃˆÃ«Ã’Ã€Ã€Âµ
  * springframework
  * 
  */
@@ -31,4 +31,5 @@ public class SpringUtil implements ApplicationContextAware {
 	public static <T> T getBean(String name) throws BeansException {
 		return (T) getApplicationContext().getBean(name);
 	}
+	
 }
