@@ -1,4 +1,4 @@
-package com.yonyou.util;
+package Util;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -6,17 +6,22 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-
-import com.yonyou.gamc.vo.HeaderVO;
-
-
+/**
+ * 
+ *引入依赖
+ *poi-3.14
+ *poi-examples-3.14
+ *poi-ooxx-3.14
+ *poi-ooxx-schemas-3.14
+ *poi-scratchpad-3.14
+ *
+ */
 public class ExcelUtil {
 
 	/**
@@ -193,60 +198,7 @@ public class ExcelUtil {
 
 	}
 	
-	/**
-	 * 设动态表头
-	 * 
-	 * @param sh
-	 * @param hcell
-	 */
-	public static void setCellL(Sheet sh, Map<Integer, Integer> map,
-			List<List<HeaderVO>> hcell) {
-		for (int i = 0; i < hcell.size(); i++) {
-			Row row = sh.createRow(i);
-			for (int j = 0; j < hcell.get(i).size(); j++) {
-				Cell cell = row.createCell(hcell.get(i).get(j).getCol());
-				cell.setCellValue(hcell.get(i).get(j).getValue());
-				if (!map.containsKey(hcell.get(i).get(j).getCol())) {
-					map.put(hcell.get(i).get(j).getCol(), hcell.get(i).get(j)
-							.getValue().length());// 表格宽度
-				} else if (map.containsKey(hcell.get(i).get(j).getCol())
-						&& map.get(hcell.get(i).get(j).getCol()) < hcell.get(i)
-								.get(j).getValue().length()) {
-					map.put(hcell.get(i).get(j).getCol(), hcell.get(i).get(j)
-							.getValue().length());// 表格宽度
-				}
-				cell.setCellStyle(hcell.get(i).get(j).getStyle());
-
-			}
-		}
-	}
-
-	/**
-	 * 设固定表头
-	 * 
-	 * @param sh
-	 * @param hcell
-	 */
-	public static void setCell(Sheet sh, Map<Integer, Integer> map, HeaderVO[][] hcell) {
-		for (int i = 0; i < hcell.length; i++) {
-			Row row = sh.createRow(i);
-			for (int j = 0; j < hcell[i].length; j++) {
-				Cell cell = row.createCell(hcell[i][j].getCol());
-				cell.setCellValue(hcell[i][j].getValue());
-				if (!map.containsKey(hcell[i][j].getCol())) {
-					map.put(hcell[i][j].getCol(), hcell[i][j].getValue()
-							.length());// 表格宽度
-				} else if (map.containsKey(hcell[i][j].getCol())
-						&& map.get(hcell[i][j].getCol()) < hcell[i][j]
-								.getValue().length()) {
-					map.put(hcell[i][j].getCol(), hcell[i][j].getValue()
-							.length());// 表格宽度
-				}
-				cell.setCellStyle(hcell[i][j].getStyle());
-
-			}
-		}
-	}
+	
 
 	/**
 	 * 0003表 设置每一行表内容以及样式的通用方法
