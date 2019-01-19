@@ -1224,6 +1224,15 @@ public class DateUtil {
         return new Timestamp(date.getTime());
 	}
 	
+	/**
+	 * 数据库获取当前时间
+	 * @return sql.Date
+	 * 
+	 */
+	public static Date getDBTime() {	
+		 Date sqlDate = new java.sql.Date(new Date().getTime());  
+		 return sqlDate;
+	}
 	
 	
 }
